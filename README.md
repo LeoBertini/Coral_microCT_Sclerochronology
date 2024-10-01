@@ -3,8 +3,9 @@ This repository contains Supporting Material to accompany Chapter 3 of my PhD Th
 Below, you'll find a brief description of directories in this repository
 
 ## [Code](https://github.com/LeoBertiniNHM/Coral_microCT_Sclerochronology/blob/2b82ff0835711e7c3a4ec4dd7a53908ea392d6b5/Avizo_API_Code)
-- Code for manipulation of coral volumes and extraction of aligned µCT slices via Avizo's Python API 
-- Code for virtual slab processing
+- Python code for manipulation of coral volumes and extraction of aligned µCT slices via Avizo's Python API 
+- Python code for virtual slab processing
+- R code used to produce figures 
 
 
 ## [Data](https://github.com/LeoBertiniNHM/Coral_microCT_Sclerochronology/blob/03bb3881882dc6e546053cab3cc5824431510c40/Data)
