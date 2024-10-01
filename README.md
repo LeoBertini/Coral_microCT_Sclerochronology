@@ -11,6 +11,6 @@ Below, you'll find a brief description of directories in this repository
 
 ## [Data](https://github.com/LeoBertiniNHM/Coral_microCT_Sclerochronology/blob/03bb3881882dc6e546053cab3cc5824431510c40/Data)
 - Published tables with extracted data and sclerochronology analyses 
-- Download links to full-resolution coral X-ray µCT slab images
+- Download links to full-resolution coral X-ray µCT slab images.
 
 
