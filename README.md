@@ -11,7 +11,7 @@ Below, you'll find a brief description of directories in this repository
 ## [Data](https://github.com/LeoBertiniNHM/Coral_microCT_Sclerochronology/blob/03bb3881882dc6e546053cab3cc5824431510c40/Data)
 - Published tables with extracted data and sclerochronology analyses 
 - Download links to full-resolution coral X-ray µCT slab images.
-- [Region Of Interest](https://github.com/LeoBertiniNHM/Coral_microCT_Sclerochronology/blob/49c31ce2b92c22c6d27dd5dc55d10a2b37e735d1/Data/Coral_ROIS.zip) compatible with [Fiji](https://imagej.net/software/fiji/) and containing manual tracings on virtual coral slabs
+- [Region Of Interest Files](https://github.com/LeoBertiniNHM/Coral_microCT_Sclerochronology/blob/49c31ce2b92c22c6d27dd5dc55d10a2b37e735d1/Data/Coral_ROIS.zip) compatible with [Fiji](https://imagej.net/software/fiji/) and containing manual tracings on virtual coral slabs
 
 
 
