@@ -8,8 +8,7 @@ Author: Leonardo Bertini (l.bertini@nhm.ac.uk)
 """
 Instructions:
 The following code under triple quotes should be 'pasted' into an AVIZO Python console...
-and point to the path of AVIZO_oblique_slice_extractor.py on the local drive 
-adjusted accordingly on line 70 of this script
+and point to the path of AVIZO_oblique_slice_extractor.py on the local drive (line 74 of this script)
 """
 
 """
@@ -72,7 +71,7 @@ PS. if you want to generate metadata from raw volumes without exporting stacks .
 'craweler_for_new_xy_Stacks.py' so a dummy dir is used in the search and all the raw volumes are grabbed 
 wihtout exporting the stacks (change this in the future to a 'Metadata extract mode'
 
-#exec(open("C:\\Users\\ctlablovelace\\PycharmProjects\\Getting_Stacks_backup\\AVIZO_oblique_slice_extractor.py").read(), globals())
+#exec(open("C:\\Users\\ctlablovelace\\PycharmProjects\\AVIZO_oblique_slice_extractor.py").read(), globals())
 """
 
 # beggining of python script using AVIZO API

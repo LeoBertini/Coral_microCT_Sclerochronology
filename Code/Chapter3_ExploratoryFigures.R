@@ -75,10 +75,11 @@ MGA_PipePlot = function(Dataframe, variable, xmin, xmax, ymin, ymax, xbreak, ybr
 }
 
 # Getting the path of current R file.. this is where figures will be saved by default
-setwd('/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/RScripts')
+setwd('/Users/leonardobertini/Library/CloudStorage/RScripts')
    
 # importing datasets
-datapath ="/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Coral_Growth_Data_Chapter4.xlsx"
+datapath ="/Users/leonardobertini/Library/CloudStorage/Sclerochronology_Data.xlsx"
+
 MGA_DF = read_excel(datapath, sheet = 'DataArrangedForPlot')
 MGA_DF$Ext_cmyr = MGA_DF$Ext_mmyr*0.1
 
@@ -520,7 +521,7 @@ MGA_PipePlot_Zoomed
 
 # AMR Extension Rate vs AMR Density with midpoints -----------------------------------------------------------------
 # importing dataset
-datapath="/Users/leonardobertini/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofBristol/grp-Chapter 4 - Leo - General/Results/Coral_Growth_Data_Chapter4.xlsx" 
+datapath="/Users/leonardobertini/Library/CloudStorage/Sclerochronology_Data.xlsx"
 DF2 = read_excel(datapath, sheet = 'CalciRates')
 DF2$midpoint = ((DF2$AMR_MeanDistance_cm*10)/DF2$TotalAgeMin + (DF2$AMR_MeanDistance_cm*10)/DF2$TotalAgeMax)/2
 DF2 = DF2[DF2$Slab_Orientation=='Vertical',]
