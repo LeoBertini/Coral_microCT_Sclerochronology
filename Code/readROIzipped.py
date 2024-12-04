@@ -282,7 +282,7 @@ for file in roi_files_filtered:
         density_estimate_corr = density * pd.eval(Calibrations['Density_Correction_Factor'][df_index])
         d.append(density_estimate_corr)
         mass = density_estimate_corr * (((
-                                                     vsize ** 2) * slab_depth_mm) / 1000) * count  # voxelvolumes: *vsize (area in mm2 *0.01 for cm2), then multiply by slab depth for volume..
+                                                 vsize ** 2) * slab_depth_mm) / 1000) * count  # voxelvolumes: *vsize (area in mm2 *0.01 for cm2), then multiply by slab depth for volume..
         weights.append(mass)
     print(f'Time elapsed is {time.time() - t} seconds')
     slab_mass = sum(weights)
@@ -506,4 +506,3 @@ time_end = time.time()
 
 elapsed_time = time_end - time_start
 print(f'Total execution in {elapsed_time / 60} min')
-
