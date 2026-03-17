@@ -37,19 +37,27 @@ def get_centre_position(target_dic, stride):
     centre_slices = range(0, len(files), stride)  # positions of centre slices --> pass this to parallel computing
     return list(centre_slices)
 
-def get_vsize_from_CT_filetypes(folder):
-    file_extensions = [".xtekct", ".xtekVolume"]
-    TargetStrings = ['VoxelSizeX=', 'Voxel size = ']
-    # parent_folder = os.path.dirname(folder)
+def get_vsize_from_CT_filetypes(selected_project_dir):
+    """
+    This function reads different types of text files from different micro-CT scanners, containing configuration data.
+    It locates fields where the resolution of the scan is mentioned. This is the size in mm of any pixel in 2D, and the thickness of a µCT slice in 3D
+
+    :param selected_project_dir: the X-ray scan directory  indicated by the user on a graphical prompt
+    :param scan_name: the X-ray dataset name
+    :return: the voxel size of the scan being processed, which is later appended to a dataframe containing the scan metadata and the calibration greyscale probing results
+    """
+
+    file_extensions = [".xtekCT", ".xtekVolume", 'xtekct', '.log']
+    TargetStrings = ['VoxelSizeX=', 'Voxel size = ', 'Image Pixel Size (um)']
+    parent_folder = os.path.join(selected_project_dir)
 
     # MAIN_PATH=os.path.join(Drive_Letter, main_dir)
 
-    for root, dirs, files in os.walk(folder, topdown=False):
+    for root, dirs, files in os.walk(parent_folder, topdown=False):
         for name in files:
             if any([name.endswith(extension) for extension in file_extensions]):
                 print(f"Found config file for scan in {os.path.abspath(os.path.join(root, name))}")
                 target_file_path = os.path.abspath(os.path.join(root, name))
-                ##TODO get voxelsize from xtect or CWI files or xteck volume files
 
     dummy_size = []
     with open(target_file_path, 'rt') as myfile:  # Open lorem.txt for reading text
@@ -64,6 +72,10 @@ def get_vsize_from_CT_filetypes(folder):
         voxelsize = float(dummy_size.split(TargetStrings[0])[-1])
     if TargetStrings[1] in dummy_size:
         voxelsize = float(dummy_size.split(TargetStrings[1])[-1])
+    if TargetStrings[2] in dummy_size: # added line to deal with Bruker scanner filetype
+        voxelsize = float(dummy_size.split(TargetStrings[2])[-1].split('=')[-1])
+        voxelsize = voxelsize/1e3
+
     print(f"Voxel size is {voxelsize}")
 
     return voxelsize
@@ -208,7 +220,10 @@ if __name__ == '__main__':
 
         slab_thickness = 3 #each slab with 3mm thickness as default
         default_size = int(slab_thickness / voxel_size)   #equivalent number of slices to make a 3 mm slab
-        strides = [default_size, int(default_size/2)] # modify stride so jump from centre slices is equally spaced (first is a 3mm equivalent slab, second is flexible size)
+        strides = [default_size, # modify stride so jump from centre slices is equally spaced (first is a 3mm default slab, second onwards give flexible size)
+                   int(default_size/2),
+                   int(1/voxel_size),
+                   int(0.5/voxel_size)]
 
         # build iterator tuple
         iterator = []
