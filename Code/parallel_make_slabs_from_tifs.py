@@ -26,7 +26,7 @@ def get_tiff_stack(dir_path):
     dir_items = os.listdir(dir_path)
     files = []
     for filename in dir_items:
-        if filename.endswith(".tif"):
+        if filename.endswith(".tif") or filename.endswith(".tiff"):
             # print(f"{filename}")
             files.append(os.path.join(dir_path, filename))
     return files
