@@ -4,6 +4,7 @@ import numpy as np
 import multiprocessing
 from tkinter import filedialog
 from tkinter import *
+from pathlib import Path, PureWindowsPath
 
 
 def find_slab_dirs(top_dir):
@@ -14,11 +15,11 @@ def find_slab_dirs(top_dir):
                     os.path.join(dirpath, item))) != 0:  # if there is already a slab dir which is not empty just skip
                 print(f" Ignored because Slabs are already exported to {os.path.join(dirpath, item)}")
                 break
-            elif item == 'TIFF_HorizontalAxis':
+            if item == 'TIFF_HorizontalAxis':
                 paths.append(os.path.join(dirpath, item))
-            elif item == 'TIFF_VerticalAxis':
+            if item == 'TIFF_VerticalAxis':
                 paths.append(os.path.join(dirpath, item))
-            elif 'masked_tiff' in item:
+            if 'masked_tiff' in item:
                 paths.append(os.path.join(dirpath, item))
     return paths
 
@@ -168,6 +169,8 @@ def make_slab(target_dic, stride, slab_centre, voxel_size):
         Ortho = False
         Growth = False
         OtherFormat = False
+
+        files=[str(PureWindowsPath(item)) for item in files]
 
         if 'TIFF_VerticalAxis' in files[0].split("\\"):
             basefilename = files[0].split("\\")[-1].split('VerticalAxis')[0]
